@@ -3,6 +3,16 @@ Simple jQuery based calendar script - another one :smile:
 
 Plain, clear and easy to use!
 
+Sometimes you need **SIMPLE** calendar just to browse dates and send aJAX requests.
+
+I've found nothing! That's why all this about :boom:
+
+Output format is **YYYY-MM-DD** to fit MySQL requests
+
+Calendar has a super-puper feature :100:  - auto language detection!
+
+If you need a bit more features feel free to write comments :left_speech_bubble: ! 
+
 ## Setup
 ```
 <script type="text/javascript" src="evk_calendar_jk.js"></script>
