@@ -2,7 +2,7 @@
 Simple jQuery based calendar script
 All you need is include:
 <script type="text/javascript" src="evk_calendar_jk.js"></script>
-<link type="text/css" href="evk_calendar_jk.css" rel="stylesheet">
+<link href="evk_calendar_jk.css" rel="stylesheet" type="text/css">
 
 Then:
 
