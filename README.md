@@ -1,10 +1,11 @@
 # evk_calendar
 Simple jQuery based calendar script
-All you need is include:
+
+**All you need is include:**
 <script type="text/javascript" src="evk_calendar_jk.js"></script>
 <link href="evk_calendar_jk.css" rel="stylesheet" type="text/css">
 
-Then:
+**Then:**
 
 <script type="text/javascript">
 $(document).ready(function(){
