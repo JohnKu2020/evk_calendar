@@ -66,8 +66,10 @@
 				if (e.which!=1) return false;
 				var ClickDay=$(e.target).attr('data-id');
 				element.find('td.cDay, td.сToday').removeClass('selected');$(this).addClass('selected');
-				if (ClickDay!=CurrentDay) CurrentDay=ClickDay;
-				var evt = $.Event('change'); element.trigger(evt, ClickDay);
+				if (ClickDay!=CurrentDay) {
+					CurrentDay=ClickDay;
+					var evt = $.Event('change'); element.trigger(evt, ClickDay);
+				}
 			});
 		});
 	}
