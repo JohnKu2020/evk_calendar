@@ -24,7 +24,7 @@
 			tr_count = 0,
 			lang = '',
 			calendar = '',
-			empty_day = '<td>&nbsp;</td>',
+			empty_day = '<td class="сEmpty">&nbsp;</td>',
 			initElement = function (show_month = CurrentMonth, show_year = CurrentYear) {
 				if (activeOptions['lang'] === undefined || activeOptions['lang'] === null) { var strings = new Object(); if(navigator.browserLanguage){ lang = navigator.browserLanguage; } else { lang = navigator.language; }; lang = lang.substr(0,2).toLowerCase(); if (lang === undefined || lang === null) lang = 'ru'; } else { lang = activeOptions['lang']; }
 				if(lang=='ru'){ var nmonth=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"], nday=["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]; } else { var nmonth=["January","February","March","April","May","June","July","August","September","October","November","December"], nday=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; }
@@ -38,11 +38,13 @@
 				}
 				for (var i = DNlast; i < 7; i++) calendar += empty_day;
 				DaysHeader = ''; for(var i = 0; i < 7; i++) DaysHeader += '<td>'+nday[i]+'</td>';
-				LastRow = ''; if (tr_count < 6) { for (var i = 1; i < 7; i++) LastRow +=empty_day;  LastRow = '<tr>'+LastRow+'</tr>'; }
+				LastRow = ''; if (tr_count < 6) { for (var i = 1; i < 7; i++) LastRow +=empty_day; LastRow = '<tr>'+LastRow+'</tr>'; }
 				element.html('<table class="'+element_class+'" style="background-color:'+activeOptions.backgroundcolor+';color:'+activeOptions.color+';width:'+activeOptions.width+'">'
-								+'<thead><tr><td class="m_Prev">‹</td><td colspan="5" data-month="'+D.getMonth()+1+'" data-year="'+D.getFullYear()+'">'+nmonth[D.getMonth()] +' '+ D.getFullYear()+'</td><td class="m_Next">›</td></tr></thead>'
-								+'<tbody><tr>'+DaysHeader+'</tr>'+calendar+LastRow+'</tbody></table>');
-				element.css('cursor', 'pointer');
+								+'<thead>'
+								+'<tr><td class="y_Prev"></td><td colspan="5" data-month="'+D.getMonth()+1+'" data-year="'+D.getFullYear()+'">'+ D.getFullYear()+'</td><td class="y_Next"></td></tr>'
+								+'<tr><td class="m_Prev"></td><td style="font-size: 18px; padding: 0 0 10px; font-weight: 500;" colspan="5" data-month="'+D.getMonth()+1+'" data-year="'+D.getFullYear()+'">'+nmonth[D.getMonth()] +'</td><td class="m_Next"></td></tr></thead>'
+								+'<tbody><tr>'+DaysHeader+'</tr>'+calendar+LastRow+'</tbody></table>')
+						.css('cursor', 'pointer');
 			},
 			format_event_date = function (iyear, imonth, iday) {
 				var Dlast = new Date(CurrentYear,CurrentMonth+1,0).getDate(), D = new Date(CurrentYear,CurrentMonth,Dlast), d_month = D.getMonth()+1;
@@ -60,6 +62,14 @@
 				CurrentMonth++; if (CurrentMonth>12) { CurrentMonth=1; CurrentYear++; }
 				initElement(CurrentMonth, CurrentYear);
 				var evt = $.Event('month_next'); element.trigger(evt, format_event_date(CurrentYear, CurrentMonth+1, 1));
+			});
+			element.on('click', '.y_Prev', function (e) {
+				if (e.which!=1) return false; e.preventDefault(); CurrentYear--; initElement(CurrentMonth, CurrentYear);
+				var evt = $.Event('year_prev'); element.trigger(evt, format_event_date(CurrentYear, CurrentMonth+1, 1));
+			});
+			element.on('click', '.y_Next', function (e) {
+				if (e.which!=1) return false; e.preventDefault(); CurrentYear++; initElement(CurrentMonth, CurrentYear);
+				var evt = $.Event('year_next'); element.trigger(evt, format_event_date(CurrentYear, CurrentMonth+1, 1));
 			});
 			element.on('click', '.cDay, .сToday', function (e) {
 				e.preventDefault();
