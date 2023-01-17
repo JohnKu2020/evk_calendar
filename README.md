@@ -23,15 +23,19 @@ If you need a bit more features feel free to write comments :left_speech_bubble:
 <script type="text/javascript">
 $(document).ready(function(){
 
-	$('#cale').evkJKcalendar({lang:'ru'});
+	$('#cale').evkJKcalendar(); // Force language select: $('#cale').evkJKcalendar({lang:'en'});
 
 	// Events
 	$("#cale").on('change',function(e, date){
-		console.log('date: '+date);
+		log('date: '+date);
 	}).on('month_prev',function(e, month){
-		console.log('month: '+month);
+		log('month: '+month);
 	}).on('month_next',function(e, month){
-		console.log('month: '+month);
+		log('month: '+month);
+	}).on('year_prev',function(e, year){
+		log('year: '+year);
+	}).on('year_next',function(e, year){
+		log('year: '+year);
 	});
   
 });
@@ -42,8 +46,8 @@ $(document).ready(function(){
 ```
 { lang: 'ru|en', width: '100%', backgroundcolor: 'transparent', color: '#000000'}
 ```
-## How it looks
-![How it looks](https://evk.ru.com/uploads/github/evk_calendar_jk_js.JPG)
+## How it looks like
+![How it looks](https://evk.ru.com/demo/github/evk_calendar_jk_js/evk_calendar_jk_js.jpg)
 
 ## Demo
 You can see a [demo and usage here](https://evk.ru.com/demo/github/evk_calendar_jk_js)
