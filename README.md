@@ -47,10 +47,10 @@ $(document).ready(function(){
 { lang: 'ru|en', width: '100%', backgroundcolor: 'transparent', color: '#000000'}
 ```
 ## How it looks like
-![How it looks](https://evk.ru.com/demo/github/evk_calendar_jk_js/evk_calendar_jk_js.jpg)
+![How it looks](https://evk.com.ua/demo/github/evk_calendar_jk_js/evk_calendar_jk_js.jpg)
 
 ## Demo
-You can see a [demo and usage here](https://evk.ru.com/demo/github/evk_calendar_jk_js)
+You can see a [demo and usage here](https://evk.com.ua/demo/github/evk_calendar_jk_js)
 
 ## License
 
